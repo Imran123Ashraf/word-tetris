@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         minWidth: 10,
         minHeight: 10,
         height: blockSize(),
-        width: blockSize(),
+        width: blockSize(),           
     },
     buttonContent: {
         display: 'flex',
@@ -33,16 +33,12 @@ const styles = StyleSheet.create({
         fontFamily: "'Roboto', sans-serif",
         color: '#ffffff',
         fontSize: 20,
-        fontWeight: 600
+        fontWeight: 600,
     },
-    subText: {
-        fontSize: 10
-    }
 });
 
 
 export default class Block extends Component {
-
 
     _onBlockClick = () => {
         const { letter, onLetterClick } = this.props;
@@ -52,7 +48,7 @@ export default class Block extends Component {
     }
 
     render() {
-        const { letter, pos } = this.props;
+        const { letter } = this.props;
 
         let fillerStyle = { border: '1px solid black' }
         if (letter) {
@@ -67,13 +63,8 @@ export default class Block extends Component {
             <Button variant="outlined" className={css(styles.container)} style={fillerStyle} onClick={this._onBlockClick}>
                 <div className={css(styles.buttonContent)}>
                     {letter && <span className={css(styles.mainText)}>{letter.letter}</span>}
-                    {process.env.NODE_ENV !== 'production' && <span className={css(styles.subText)} > {pos.x + "," + pos.y}</span >}
                 </div>
             </Button >
         );
     }
 }
-
-
-
-
